@@ -474,6 +474,10 @@ trait PacketHandlerDefaultImplTrait{
 		return false;
 	}
 
+	public function handleScriptCustomEvent(ScriptCustomEventPacket $packet) : bool{
+		return false;
+	}
+
 	public function handleSpawnParticleEffect(SpawnParticleEffectPacket $packet) : bool{
 		return false;
 	}
@@ -686,6 +690,10 @@ trait PacketHandlerDefaultImplTrait{
 		return false;
 	}
 
+	public function handlePhotoInfoRequest(PhotoInfoRequestPacket $packet) : bool{
+		return false;
+	}
+
 	public function handleSubChunk(SubChunkPacket $packet) : bool{
 		return false;
 	}
@@ -778,6 +786,10 @@ trait PacketHandlerDefaultImplTrait{
 		return false;
 	}
 
+	public function handleClientCheatAbility(ClientCheatAbilityPacket $packet) : bool{
+		return false;
+	}
+
 	public function handleCameraPresets(CameraPresetsPacket $packet) : bool{
 		return false;
 	}
@@ -801,7 +813,7 @@ trait PacketHandlerDefaultImplTrait{
 	public function handleOpenSign(OpenSignPacket $packet) : bool{
 		return false;
 	}
-
+	
 	public function handleAgentAnimation(AgentAnimationPacket $packet) : bool{
 		return false;
 	}

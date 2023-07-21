@@ -146,6 +146,7 @@ class PacketPool{
 		$this->registerPacket(new SetLocalPlayerAsInitializedPacket());
 		$this->registerPacket(new UpdateSoftEnumPacket());
 		$this->registerPacket(new NetworkStackLatencyPacket());
+		$this->registerPacket(new ScriptCustomEventPacket());
 		$this->registerPacket(new SpawnParticleEffectPacket());
 		$this->registerPacket(new AvailableActorIdentifiersPacket());
 		$this->registerPacket(new LevelSoundEventPacketV2());
@@ -199,6 +200,7 @@ class PacketPool{
 		$this->registerPacket(new EduUriResourcePacket());
 		$this->registerPacket(new CreatePhotoPacket());
 		$this->registerPacket(new UpdateSubChunkBlocksPacket());
+		$this->registerPacket(new PhotoInfoRequestPacket());
 		$this->registerPacket(new SubChunkPacket());
 		$this->registerPacket(new SubChunkRequestPacket());
 		$this->registerPacket(new PlayerStartItemCooldownPacket());
@@ -222,6 +224,7 @@ class PacketPool{
 		$this->registerPacket(new GameTestRequestPacket());
 		$this->registerPacket(new GameTestResultsPacket());
 		$this->registerPacket(new UpdateClientInputLocksPacket());
+		$this->registerPacket(new ClientCheatAbilityPacket());
 		$this->registerPacket(new CameraPresetsPacket());
 		$this->registerPacket(new UnlockedRecipesPacket());
 		$this->registerPacket(new CameraInstructionPacket());

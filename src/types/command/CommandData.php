@@ -58,7 +58,7 @@ class CommandData{
 	public function getOverloads() : array{
 		return $this->overloads;
 	}
-
+	
 	/**
 	 * @return ChainedSubCommandData[]
 	 */

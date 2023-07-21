@@ -34,6 +34,7 @@ final class ProtocolInfo{
 	/** Actual Minecraft: PE protocol version */
 	public const CURRENT_PROTOCOL = self::PROTOCOL_1_20_10;
 	public const ACCEPTED_PROTOCOL = [
+		self::PROTOCOL_1_18_0,
 		self::PROTOCOL_1_18_10,
 		self::PROTOCOL_1_18_30,
 		self::PROTOCOL_1_19_0,
@@ -52,7 +53,7 @@ final class ProtocolInfo{
 	];
 
 	/** Current Minecraft PE version reported by the server. This is usually the earliest currently supported version. */
-	public const MINECRAFT_VERSION = 'v1.20.10';
+	public const MINECRAFT_VERSION = 'v1.18.0-1.20.10';
 	/** Version number sent to clients in ping responses. */
 	public const MINECRAFT_VERSION_NETWORK = '1.20.10';
 
@@ -71,6 +72,7 @@ final class ProtocolInfo{
 	public const PROTOCOL_1_19_0 = 527;
 	public const PROTOCOL_1_18_30 = 503;
 	public const PROTOCOL_1_18_10 = 486;
+	public const PROTOCOL_1_18_0 = 475;
 
 	public const LOGIN_PACKET = 0x01;
 	public const PLAY_STATUS_PACKET = 0x02;
@@ -188,6 +190,7 @@ final class ProtocolInfo{
 	public const UPDATE_SOFT_ENUM_PACKET = 0x72;
 	public const NETWORK_STACK_LATENCY_PACKET = 0x73;
 
+	public const SCRIPT_CUSTOM_EVENT_PACKET = 0x75;
 	public const SPAWN_PARTICLE_EFFECT_PACKET = 0x76;
 	public const AVAILABLE_ACTOR_IDENTIFIERS_PACKET = 0x77;
 	public const LEVEL_SOUND_EVENT_PACKET_V2 = 0x78;
@@ -243,7 +246,7 @@ final class ProtocolInfo{
 	public const EDU_URI_RESOURCE_PACKET = 0xaa;
 	public const CREATE_PHOTO_PACKET = 0xab;
 	public const UPDATE_SUB_CHUNK_BLOCKS_PACKET = 0xac;
-
+	public const PHOTO_INFO_REQUEST_PACKET = 0xad;
 	public const SUB_CHUNK_PACKET = 0xae;
 	public const SUB_CHUNK_REQUEST_PACKET = 0xaf;
 	public const PLAYER_START_ITEM_COOLDOWN_PACKET = 0xb0;
@@ -267,7 +270,7 @@ final class ProtocolInfo{
 	public const GAME_TEST_REQUEST_PACKET = 0xc2;
 	public const GAME_TEST_RESULTS_PACKET = 0xc3;
 	public const UPDATE_CLIENT_INPUT_LOCKS_PACKET = 0xc4;
-
+	public const CLIENT_CHEAT_ABILITY_PACKET = 0xc5;
 	public const CAMERA_PRESETS_PACKET = 0xc6;
 	public const UNLOCKED_RECIPES_PACKET = 0xc7;
 

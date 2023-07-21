@@ -145,6 +145,31 @@ class AvailableCommandsPacket extends DataPacket implements ClientboundPacket{
 			};
 		}
 
+		if($protocolId <= ProtocolInfo::PROTOCOL_1_18_10){
+			return match ($type) {
+				self::ARG_TYPE_INT => 0x01,
+				self::ARG_TYPE_FLOAT => 0x03,
+				self::ARG_TYPE_VALUE => 0x04,
+				self::ARG_TYPE_WILDCARD_INT => 0x05,
+				self::ARG_TYPE_OPERATOR => 0x06,
+				self::ARG_TYPE_COMPARE_OPERATOR => 0x07,
+				self::ARG_TYPE_TARGET => 0x08,
+				self::ARG_TYPE_WILDCARD_TARGET => 0x0a,
+				self::ARG_TYPE_FILEPATH => 0x11,
+				self::ARG_TYPE_FULL_INTEGER_RANGE => 0x17,
+				self::ARG_TYPE_EQUIPMENT_SLOT => 0x26,
+				self::ARG_TYPE_STRING => 0x27,
+				self::ARG_TYPE_INT_POSITION => 0x2f,
+				self::ARG_TYPE_POSITION => 0x30,
+				self::ARG_TYPE_MESSAGE => 0x33,
+				self::ARG_TYPE_RAWTEXT => 0x35,
+				self::ARG_TYPE_JSON => 0x39,
+				self::ARG_TYPE_BLOCK_STATES => 0x43,
+				self::ARG_TYPE_COMMAND => 0x46,
+				default => $type,
+			};
+		}
+
 		if($protocolId >= ProtocolInfo::PROTOCOL_1_18_30){
 			return match($type) {
 				self::ARG_TYPE_TARGET => 0x07,
@@ -210,7 +235,7 @@ class AvailableCommandsPacket extends DataPacket implements ClientboundPacket{
 				$this->hardcodedEnums[] = $enum;
 			}
 		}
-
+		
 		$chainedSubCommandData = [];
 		if($in->getProtocolId() >= ProtocolInfo::PROTOCOL_1_20_10){
 			for($i = 0, $count = $in->getUnsignedVarInt(); $i < $count; ++$i){
@@ -407,7 +432,7 @@ class AvailableCommandsPacket extends DataPacket implements ClientboundPacket{
 		$flags = $in->getLShort();
 		$permission = $in->getByte();
 		$aliases = $enums[$in->getLInt()] ?? null;
-
+		
 		$chainedSubCommandData = [];
 		if($in->getProtocolId() >= ProtocolInfo::PROTOCOL_1_20_10){
 			for($i = 0, $count = $in->getUnsignedVarInt(); $i < $count; ++$i){
@@ -520,7 +545,7 @@ class AvailableCommandsPacket extends DataPacket implements ClientboundPacket{
 		 * @phpstan-var array<string, int> $postfixIndexes
 		 */
 		$postfixIndexes = [];
-
+		
 		/**
 		 * @var CommandEnum[] $enums
 		 * @phpstan-var array<string, CommandEnum> $enums
@@ -531,7 +556,7 @@ class AvailableCommandsPacket extends DataPacket implements ClientboundPacket{
 		 * @phpstan-var array<string, int> $enumIndexes
 		 */
 		$enumIndexes = [];
-
+		
 		/**
 		 * @var CommandEnum[] $softEnums
 		 * @phpstan-var array<string, CommandEnum> $softEnums
@@ -588,8 +613,10 @@ class AvailableCommandsPacket extends DataPacket implements ClientboundPacket{
 			if($commandData->aliases !== null){
 				$addEnumFn($commandData->aliases);
 			}
+			/** @var CommandParameter[] $overload */
 			foreach($commandData->overloads as $overload){
-				foreach($overload->getParameters() as $parameter){
+				/** @var CommandParameter $parameter */
+				foreach($overload as $parameter){
 					if($parameter->enum !== null){
 						$addEnumFn($parameter->enum);
 					}
